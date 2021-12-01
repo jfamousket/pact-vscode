@@ -1,0 +1,98 @@
+{
+  "name": "language-pact",
+  "displayName": "language-pact",
+  "description": "Pact language support for vscode",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:pact"
+  ],
+  "main": "./client/out/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Pact",
+      "properties": {
+        "language-pact.pactPath": {
+          "scope": "resource",
+          "type": "string",
+          "default": "pact",
+          "description": "Pact Path"
+        },
+        "language-pact.pactExcerptSize": {
+          "scope": "resource",
+          "type": "integer",
+          "default": 80,
+          "description": "Pact Excerpt Size"
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "pact",
+        "aliases": [
+          "Pact",
+          "pact"
+        ],
+        "extensions": [
+          ".pact",
+          ".repl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pact",
+        "scopeName": "source.pact",
+        "path": "./syntaxes/pact.tmLanguage.json"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "pact-vscode.toggleTrace"
+        },
+        {
+          "command": "pact-vscode.toggleCoverage"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "pact-vscode.toggleTrace",
+        "title": "Toggle trace"
+      },
+      {
+        "command": "pact-vscode.toggleCoverage",
+        "title": "Toggle coverage"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+    "postinstall": "cd client && yarn && cd ../server && yarn && cd ..",
+    "test": "sh ./scripts/e2e.sh"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.62.0",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.1.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.3",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {}
+}

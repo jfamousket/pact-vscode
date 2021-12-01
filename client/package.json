@@ -1,0 +1,22 @@
+{
+	"name": "language-pact-client",
+	"description": "Pact language client",
+	"author": "Famous Ketoma",
+	"license": "MIT",
+	"version": "0.0.1",
+	"publisher": "jfamousket",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-extension-samples"
+	},
+	"engines": {
+		"vscode": "^1.62.0"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^7.0.0"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.62.0",
+		"@vscode/test-electron": "^1.6.2"
+	}
+}
